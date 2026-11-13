@@ -1,0 +1,33 @@
+---
+---
+<div id="letter" class="overlay letter-overlay" role="dialog" aria-modal="true" aria-label="Carta para ti">
+  <article class="paper">
+    <div class="seal" aria-hidden="true">♥</div>
+    <div id="letter-body" class="body"></div>
+    <p id="letter-sign" class="sign"></p>
+    <div class="actions">
+      <button id="letter-continue" class="btn btn-primary" type="button">Seguir paseando</button>
+      <button id="letter-restart" class="btn btn-ghost" type="button">Volver a empezar</button>
+    </div>
+  </article>
+</div>
+
+<style>
+  .letter-overlay { background: rgba(70, 30, 50, .35); }
+  .paper {
+    position: relative; width: min(500px, 100%); max-height: 86vh; overflow: auto; padding: 44px 30px 26px;
+    background: #fffdf6; border-radius: 10px 10px 28px 28px;
+    background-image: repeating-linear-gradient(transparent 0 33px, #f6e3e3 33px 34px);
+    box-shadow: 0 2px 0 #f1e3d0, 0 30px 70px rgba(80, 20, 40, .4);
+    transform: translateY(60px) rotate(2deg); opacity: 0; transition: transform .8s cubic-bezier(.2, 1.2, .3, 1), opacity .6s;
+  }
+  :global(.overlay.show) .paper { transform: none; opacity: 1; }
+  .seal {
+    position: absolute; top: 10px; left: 50%; width: 46px; height: 46px; margin-left: -23px; display: grid; place-items: center;
+    border-radius: 50%; background: var(--coral); color: #fff; font-size: 1.3rem; box-shadow: 0 3px 0 #c9505f;
+  }
+  .body :global(p) { margin: 0 0 14px; font-size: 1.12rem; line-height: 1.6; color: var(--ink); font-weight: 600; }
+  .body :global(p:first-child) { font: 700 1.5rem/1.3 var(--font-display); color: var(--coral); margin-top: 10px; }
+  .sign { margin: 18px 0 22px; text-align: right; font: 600 1.15rem/1.3 var(--font-display); color: var(--ink); }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+</style>

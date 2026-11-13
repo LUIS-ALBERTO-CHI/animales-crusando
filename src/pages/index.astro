@@ -1,0 +1,37 @@
+---
+import '../styles/global.css';
+import { CONFIG } from '../config';
+import TitleScreen from '../components/TitleScreen.astro';
+import Hud from '../components/Hud.astro';
+import DialogBox from '../components/DialogBox.astro';
+import VirtueCard from '../components/VirtueCard.astro';
+import Journal from '../components/Journal.astro';
+import Letter from '../components/Letter.astro';
+import TouchControls from '../components/TouchControls.astro';
+import Toast from '../components/Toast.astro';
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+    <meta name="theme-color" content="#86d8e6" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{CONFIG.isla}</title>
+  </head>
+  <body>
+    <canvas id="game" aria-label="Mapa de la isla"></canvas>
+    <TouchControls />
+    <Hud />
+    <Toast />
+    <DialogBox />
+    <VirtueCard />
+    <Journal />
+    <Letter />
+    <TitleScreen />
+    <script>
+      import { startGame } from '../game/main';
+      startGame();
+    </script>
+  </body>
+</html>

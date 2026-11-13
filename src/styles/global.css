@@ -1,0 +1,48 @@
+@import '@fontsource/fredoka/500.css';
+@import '@fontsource/fredoka/600.css';
+@import '@fontsource/fredoka/700.css';
+@import '@fontsource/nunito/600.css';
+@import '@fontsource/nunito/700.css';
+@import '@fontsource/nunito/800.css';
+
+:root {
+  --font-display: 'Fredoka', 'Nunito', system-ui, sans-serif;
+  --font-body: 'Nunito', system-ui, sans-serif;
+  --cream: #fff8e8;
+  --cream-dark: #ead8b4;
+  --ink: #5b4232;
+  --ink-soft: #8a6d58;
+  --coral: #ef6f82;
+  --leaf: #6cbf5e;
+  --leaf-dark: #4f9a43;
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; overflow: hidden; background: #6cc7da; }
+body {
+  font-family: var(--font-body); color: var(--ink); -webkit-font-smoothing: antialiased;
+  user-select: none; -webkit-user-select: none; -webkit-tap-highlight-color: transparent; overscroll-behavior: none;
+}
+canvas#game { position: fixed; inset: 0; width: 100vw; height: 100vh; height: 100dvh; display: block; }
+
+.btn {
+  min-height: 52px; padding: 0 28px; border: 0; border-radius: 99px; cursor: pointer;
+  font: 600 1.15rem/1 var(--font-display); transition: transform .12s, box-shadow .12s, filter .2s;
+}
+.btn-primary { background: var(--coral); color: #fff; box-shadow: 0 6px 0 #c9505f, 0 12px 24px rgba(200, 70, 90, .28); }
+.btn-primary:hover { filter: brightness(1.05); }
+.btn-primary:active { transform: translateY(4px); box-shadow: 0 2px 0 #c9505f; }
+.btn-ghost { background: var(--cream-dark); color: var(--ink); box-shadow: 0 5px 0 #d4bf96; }
+.btn-ghost:active { transform: translateY(3px); box-shadow: 0 2px 0 #d4bf96; }
+.btn:focus-visible, button:focus-visible { outline: 3px solid #ffffff; outline-offset: 3px; }
+
+.overlay {
+  position: fixed; inset: 0; z-index: 40; display: grid; place-items: center; padding: 16px;
+  background: rgba(60, 50, 40, .28); opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s;
+}
+.overlay.show { opacity: 1; visibility: visible; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: .01ms !important; }
+}

@@ -1,0 +1,103 @@
+---
+import { HIBISCUS, DAISY, SPRIG, SHELL } from './Decor';
+---
+<div id="card" class="overlay card-overlay" role="dialog" aria-modal="true" aria-labelledby="card-title">
+  <div class="scene">
+    <div class="board">
+      <span class="nail n1" aria-hidden="true"></span><span class="nail n2" aria-hidden="true"></span>
+      <span class="hib" aria-hidden="true" set:html={HIBISCUS} />
+      <span class="daisy" aria-hidden="true" set:html={DAISY} />
+      <h2 id="card-title">Tu bondad</h2>
+      <div class="heart-row" aria-hidden="true"><span class="dash"></span><span class="heart">♥</span><span class="dash r"></span></div>
+    </div>
+    <div class="posts" aria-hidden="true"><span></span><span></span></div>
+    <div class="cloth">
+      <span class="ring l" aria-hidden="true"></span><span class="ring r" aria-hidden="true"></span>
+      <p id="card-msg">Haces que todos se sientan en casa.</p>
+      <span class="sprig sl" aria-hidden="true" set:html={SPRIG} />
+      <span class="sprig sr" aria-hidden="true" set:html={SPRIG} />
+    </div>
+    <div class="prize">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="shell" aria-hidden="true" set:html={SHELL} />
+      <div class="stump" aria-hidden="true"></div>
+      <p id="card-prize" class="tag">Concha de luz desbloqueada</p>
+    </div>
+    <button id="card-btn" class="btn-big" type="button"><span class="spark l" aria-hidden="true"></span>Seguir el paseo<span class="spark r" aria-hidden="true"></span></button>
+  </div>
+</div>
+
+<style>
+  .card-overlay { background: rgba(60, 90, 70, .35); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); overflow: auto; }
+  .scene {
+    width: min(400px, 100%); display: flex; flex-direction: column; align-items: center; padding: 8px 0 12px;
+    transform: translateY(40px) scale(.92); opacity: 0; transition: transform .5s cubic-bezier(.2, 1.4, .4, 1), opacity .3s;
+  }
+  :global(.overlay.show) .scene { transform: none; opacity: 1; }
+
+  .board {
+    position: relative; z-index: 2; width: 100%; padding: 20px 26px 14px; border-radius: 26px; text-align: center;
+    background:
+      repeating-linear-gradient(177deg, rgba(120, 70, 30, .1) 0 3px, transparent 3px 11px),
+      linear-gradient(180deg, #e9b678 0%, #d79a5a 100%);
+    box-shadow: 0 6px 0 #9c6431, 0 14px 30px rgba(60, 30, 10, .3), inset 0 2px 0 rgba(255, 255, 255, .35);
+    rotate: -1.5deg;
+  }
+  .nail { position: absolute; width: 11px; height: 11px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #9a9a9a, #4d4d4d); }
+  .n1 { left: 16px; bottom: 16px; }
+  .n2 { right: 16px; top: 16px; }
+  .hib { position: absolute; left: -30px; top: -34px; width: 96px; rotate: -12deg; }
+  .daisy { position: absolute; right: -10px; bottom: -14px; width: 40px; }
+  .hib :global(svg), .daisy :global(svg) { width: 100%; display: block; }
+  h2 { margin: 0; font: 700 clamp(2.2rem, 10vw, 3rem)/1.05 var(--font-display); color: #4a2a14; text-shadow: 0 2px 0 rgba(255, 230, 190, .6); }
+  .heart-row { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 4px; }
+  .heart { color: #ef5a4c; font-size: 1.7rem; line-height: 1; animation: beat 1.3s ease-in-out infinite; display: inline-block; }
+  .dash { width: 22px; height: 6px; border-radius: 3px; background: #ffd23f; rotate: -20deg; }
+  .dash.r { rotate: 20deg; }
+  @keyframes beat { 0%, 100% { scale: 1; } 15% { scale: 1.2; } 30% { scale: .95; } 45% { scale: 1.12; } }
+
+  .posts { position: relative; z-index: 1; display: flex; justify-content: space-between; width: 82%; height: 0; }
+  .posts span { width: 26px; height: 290px; margin-top: -16px; border-radius: 6px; background: linear-gradient(90deg, #8b5a2f, #a8703f 50%, #7a4d27); }
+
+  .cloth {
+    position: relative; z-index: 2; width: 92%; margin-top: 18px; padding: 24px 24px 34px; border-radius: 14px;
+    background: #f6ead2; border: 3px dashed #d9c39b; outline: 6px solid #f6ead2;
+    box-shadow: 0 10px 22px rgba(60, 40, 10, .25);
+  }
+  .ring { position: absolute; top: -26px; width: 18px; height: 30px; border: 4px solid #b98a52; border-radius: 10px; }
+  .ring.l { left: 18%; }
+  .ring.r { right: 18%; }
+  #card-msg { margin: 0; text-align: center; font: 600 clamp(1.05rem, 4.6vw, 1.3rem)/1.4 var(--font-display); color: #2f4a2a; user-select: text; }
+  .sprig { position: absolute; bottom: 8px; width: 24px; height: 24px; }
+  .sprig :global(svg) { width: 100%; height: 100%; display: block; }
+  .sl { left: 10px; scale: -1 1; }
+  .sr { right: 10px; }
+
+  .prize { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; margin-top: 4px; }
+  .glow { position: absolute; top: -6px; width: 200px; height: 150px; background: radial-gradient(closest-side, rgba(255, 240, 170, .95), rgba(255, 220, 120, 0)); animation: pulse 2s ease-in-out infinite; }
+  .shell { position: relative; width: 112px; animation: float 2.6s ease-in-out infinite; filter: drop-shadow(0 0 12px rgba(255, 230, 160, .9)); }
+  .shell :global(svg) { width: 100%; display: block; }
+  .stump { width: 150px; height: 34px; margin-top: -10px; border-radius: 50% / 40%; background: radial-gradient(ellipse at 50% 30%, #d9b07a 0 35%, #b07a45 36% 60%, #7a4d27 61%); box-shadow: 0 10px 0 #6b4220; }
+  .tag {
+    position: relative; margin: 6px 0 0; padding: 10px 26px; border-radius: 16px; background: #f6ead2; border: 2px solid #d9c39b;
+    font: 600 clamp(1rem, 4.2vw, 1.15rem)/1.15 var(--font-display); color: #2f4a2a; text-align: center; box-shadow: 0 4px 0 #d9c39b;
+  }
+  @keyframes float { 50% { translate: 0 -6px; } }
+  @keyframes pulse { 50% { opacity: .65; scale: 1.08; } }
+
+  .btn-big {
+    position: relative; margin-top: 18px; min-height: 60px; padding: 0 52px; border: 0; border-radius: 99px; cursor: pointer;
+    background: linear-gradient(180deg, #ff8a6e 0%, #f0604f 100%); color: #fff7ec;
+    font: 700 clamp(1.2rem, 5vw, 1.5rem)/1 var(--font-display); text-shadow: 0 2px 0 #b8402f;
+    box-shadow: 0 7px 0 #b8402f, 0 16px 30px rgba(150, 40, 20, .35), inset 0 2px 0 rgba(255, 255, 255, .35);
+    transition: transform .12s, box-shadow .12s;
+  }
+  .btn-big:active { transform: translateY(5px); box-shadow: 0 2px 0 #b8402f; }
+  .spark { position: absolute; top: 50%; width: 18px; height: 16px; translate: 0 -50%; }
+  .spark::before, .spark::after { content: ''; position: absolute; left: 0; width: 14px; height: 3px; border-radius: 2px; background: #ffcf3a; }
+  .spark::before { top: 2px; rotate: -25deg; }
+  .spark::after { bottom: 2px; rotate: 25deg; }
+  .spark.l { left: 16px; }
+  .spark.r { right: 16px; scale: -1 1; }
+  @media (prefers-reduced-motion: reduce) { .shell, .glow, .heart { animation: none; } }
+</style>

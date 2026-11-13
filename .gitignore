@@ -1,0 +1,15 @@
+# dependencias y salidas generadas
+node_modules/
+dist/
+.astro/
+
+# entorno y registros
+.env
+.env.*
+npm-debug.log*
+*.log
+
+# sistema y editor
+.DS_Store
+Thumbs.db
+.vscode/

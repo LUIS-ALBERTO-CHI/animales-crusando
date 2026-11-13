@@ -1,0 +1,28 @@
+---
+---
+<div id="journal" class="overlay" role="dialog" aria-modal="true" aria-labelledby="journal-h">
+  <div class="book">
+    <div class="head">
+      <h2 id="journal-h">Diario de virtudes</h2>
+      <button id="journal-close" class="close" type="button" aria-label="Cerrar diario">✕</button>
+    </div>
+    <ul id="journal-list" class="list"></ul>
+  </div>
+</div>
+
+<style>
+  .book {
+    width: min(440px, 100%); max-height: min(80vh, 640px); overflow: auto; padding: 20px 20px 22px;
+    background: var(--cream); border-radius: 30px; box-shadow: 0 8px 0 var(--cream-dark), 0 30px 60px rgba(40, 40, 30, .3);
+  }
+  .head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+  h2 { margin: 0; font: 700 1.5rem/1.1 var(--font-display); color: var(--ink); }
+  .close { width: 44px; height: 44px; border: 0; border-radius: 50%; background: var(--cream-dark); color: var(--ink); font-size: 1.1rem; cursor: pointer; }
+  .list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .list :global(li) { display: flex; align-items: center; gap: 12px; padding: 8px 12px; border-radius: 18px; background: #fff7e6; border: 2px dashed #ead9bb; }
+  .list :global(li.found) { background: #fff; border: 2px solid #ffd0db; }
+  .list :global(img) { width: 44px; height: 53px; object-fit: cover; object-position: top; }
+  .list :global(.mystery) { width: 44px; height: 44px; flex: none; display: grid; place-items: center; border-radius: 50%; background: #efe2c8; color: var(--ink-soft); font: 700 1.3rem var(--font-display); }
+  .list :global(strong) { display: block; font: 600 1.08rem/1.2 var(--font-display); color: var(--ink); }
+  .list :global(small) { color: var(--ink-soft); font-weight: 700; }
+</style>

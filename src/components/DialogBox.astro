@@ -1,0 +1,37 @@
+---
+---
+<div id="dialog" class="dialog" role="dialog" aria-live="polite" aria-label="Conversación">
+  <div class="bubble">
+    <div class="tag"><img id="dlg-portrait" alt="" width="42" height="50" /><span id="dlg-name">Lola</span></div>
+    <p id="dlg-text" class="text"></p>
+    <span id="dlg-next" class="next" aria-hidden="true"></span>
+  </div>
+</div>
+
+<style>
+  .dialog {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; display: flex; justify-content: center;
+    padding: 0 16px max(18px, env(safe-area-inset-bottom)); pointer-events: none;
+    opacity: 0; transform: translateY(30px); transition: opacity .25s, transform .3s cubic-bezier(.2, 1.4, .4, 1);
+  }
+  .dialog:global(.show) { opacity: 1; transform: none; pointer-events: auto; cursor: pointer; }
+  .bubble {
+    position: relative; width: min(720px, 100%); min-height: 132px; margin-top: 30px;
+    background: var(--cream); border-radius: 46px 46px 40px 40px / 40px 40px 46px 46px;
+    padding: 34px 32px 26px; box-shadow: 0 6px 0 var(--cream-dark), 0 18px 40px rgba(40, 50, 40, .28);
+  }
+  .tag {
+    position: absolute; top: -24px; left: 26px; display: flex; align-items: center; gap: 8px;
+    background: var(--tag, var(--coral)); color: #fff; border-radius: 99px; padding: 5px 18px 5px 6px;
+    font: 600 1.1rem/1 var(--font-display); transform: rotate(-4deg); box-shadow: 0 4px 0 rgba(0, 0, 0, .12);
+  }
+  .tag img { width: 42px; height: 50px; object-fit: cover; object-position: top; margin: -16px 0 -4px; }
+  .text { margin: 0; font-size: clamp(1.02rem, 3.6vw, 1.22rem); line-height: 1.55; color: var(--ink); font-weight: 700; }
+  .text :global(.ghost) { visibility: hidden; }
+  .next {
+    position: absolute; right: 30px; bottom: 16px; width: 0; height: 0; opacity: 0;
+    border-left: 9px solid transparent; border-right: 9px solid transparent; border-top: 12px solid var(--coral);
+  }
+  .next:global(.show) { opacity: 1; animation: nudge .8s ease-in-out infinite; }
+  @keyframes nudge { 50% { transform: translateY(5px); } }
+</style>

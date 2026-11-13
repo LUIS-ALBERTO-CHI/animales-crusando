@@ -1,0 +1,28 @@
+---
+---
+<div id="touch-zone" class="zone" aria-hidden="true"></div>
+<div id="touch-controls" class="controls">
+  <div id="joy-base" class="joy-base" aria-hidden="true"><div id="joy-knob" class="joy-knob"></div></div>
+  <button id="btn-a" class="btn-a" type="button" aria-label="Hablar">A</button>
+</div>
+
+<style>
+  .zone { position: fixed; inset: 0; z-index: 5; touch-action: none; }
+  .controls { position: fixed; inset: 0; z-index: 18; pointer-events: none; display: none; }
+  :global(body.touch) .controls:global(.show) { display: block; }
+  .joy-base {
+    position: absolute; left: 0; top: 0; width: 112px; height: 112px; margin: -56px 0 0 -56px; border-radius: 50%;
+    background: rgba(255, 250, 240, .35); border: 3px solid rgba(255, 250, 240, .8); opacity: 0; transition: opacity .15s;
+  }
+  .joy-base:global(.show) { opacity: 1; }
+  .joy-knob {
+    position: absolute; left: 50%; top: 50%; width: 52px; height: 52px; border-radius: 50%;
+    background: var(--cream); box-shadow: 0 4px 0 var(--cream-dark); transform: translate(-50%, -50%);
+  }
+  .btn-a {
+    position: absolute; right: max(20px, env(safe-area-inset-right)); bottom: max(28px, env(safe-area-inset-bottom)); pointer-events: auto;
+    width: 74px; height: 74px; border-radius: 50%; border: 0; background: var(--coral); color: #fff; touch-action: manipulation;
+    font: 700 1.7rem/1 var(--font-display); box-shadow: 0 6px 0 #c9505f, 0 12px 24px rgba(0, 0, 0, .2);
+  }
+  .btn-a:active { transform: translateY(4px); box-shadow: 0 2px 0 #c9505f; }
+</style>
